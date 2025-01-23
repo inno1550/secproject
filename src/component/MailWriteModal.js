@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import FileListComponent from './FileListComponent';
 import '../css/scrollbar.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { findReceivers, sendMail } from '../api/mailApi';
 import MailExtraComponent from './MailExtraComponent';
+import { useNavigate } from 'react-router-dom';
 
 const MailWriteModal = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -24,6 +24,7 @@ const MailWriteModal = () => {
   const [isDrag, setIsDrag] = useState(false);
   const [isTypeReceiver, setIsTypeReceiver] = useState(false);
   const [isMouseListEnter, setIsMouseListEnter] = useState(false);
+  const navigate = useNavigate();
 
   const ExtraRef = useRef();
   const [isExtraShow, setIsExtraShow] = useState();
@@ -160,6 +161,7 @@ const MailWriteModal = () => {
     sessionStorage.setItem('titleTA', '');
     sessionStorage.setItem('contentTA', '');
     setModalOpen(false);
+    navigate(`/mail/list`);
   };
 
   useEffect(() => {
@@ -205,7 +207,7 @@ const MailWriteModal = () => {
     <>
       <div className="size-full flex justify-center items-end">
         <button
-          className="w-[80%] rounded-lg mb-2 text-3xl bg-blue-700 text-gray-100"
+          className="w-[80%] rounded-lg mb-2 text-3xl bg-slate-300 text-slate-800"
           onClick={() => setModalOpen(true)}
         >
           메일 쓰기

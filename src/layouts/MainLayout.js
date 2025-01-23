@@ -6,7 +6,7 @@ const MainLayout = ({ children }) => {
       <div className="w-[15%] min-w-[200px] relative">
         <BasicMenu />
       </div>
-      <div className="w-[85%]">{children}</div>
+      <div>{children}</div>
     </div>
   );
 };
